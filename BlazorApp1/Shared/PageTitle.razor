@@ -1,0 +1,31 @@
+﻿<!-- This is a function for changing the page titles -->
+<!-- Found here as a reference: https://dev.to/supachris28/changing-the-page-title-in-blazor-client-side-880 -->
+
+@inject IJSRuntime JSRuntime;
+@code {
+    private String _title = "";
+    [Parameter]
+    public String title
+    {
+        get
+        {
+            return this._title;
+        }
+        set
+        {
+            this._title = value;
+            setTitle();
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        setTitle();
+    }
+
+    private void setTitle()
+    {
+        System.Console.WriteLine("Blazor setting Title to {0}", this._title);
+        JSRuntime.InvokeAsync<string>("setTitle", new object[] { this._title });
+    }
+}

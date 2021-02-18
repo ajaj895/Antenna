@@ -1,0 +1,57 @@
+﻿<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">Antenna</a>
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <ul class="nav flex-column">
+        <li class="nav-item px-3">
+            <!-- Part of the template -->
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> Home
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <!-- Part of the template -->
+            <NavLink class="nav-link" href="counter">
+                <span class="oi oi-location" aria-hidden="true"></span> Radio Sources Near Me
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <!-- Part of the template -->
+            <NavLink class="nav-link" href="fetchdata">
+                <span class="oi oi-rss" aria-hidden="true"></span> Radio Source Catalog
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <!-- A button to the livemap -->
+            <NavLink class="nav-link" href="livemap">
+                <!-- the oi represents an icon, the oi-list-rich is the icon name -->
+                <!-- here is a list of oi icons https://useiconic.com/open -->
+                <span class="oi oi-pulse" aria-hidden="true"></span> Live Map
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <!-- A button to the livemap -->
+            <button class="btn-primary btn-outline-primary" @onclick="ToggleNavMenu">
+                <!-- the oi represents an icon, the oi-list-rich is the icon name -->
+                <!-- here is a list of oi icons https://useiconic.com/open -->
+                <span class="oi oi-resize-width" aria-hidden="true"></span>
+            </button>
+            
+        </li>
+    </ul>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}
